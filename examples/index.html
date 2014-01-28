@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>viewjs-attr-example</title>
+  <script src="../bower_components/evt/index.js"></script>
+  <script src="../bower_components/viewjs/index.js"></script>
+  <script src="../index.js"></script>
+</head>
+<body>
+  <script>
+    var attrEvents = window['viewjs-attr-events'];
+
+    var Foo = viewjs.define({
+      name: 'foo',
+      plugins: [attrEvents],
+      sayHi: function() { alert('hi'); },
+      onFocus: function() { console.log('focus'); },
+      onBlur: function() { console.log('blur'); },
+      template: function() {
+        return '<input type="text" on-focus="onFocus" on-blur="onBlur" />' +
+          '<button on-click="sayHi">Click me</button>';
+      }
+    });
+
+    var foo = new Foo().render();
+    foo.appendTo(document.body);
+  </script>
+</body>
+</html>
